@@ -8,8 +8,5 @@
  * in the user manual at https://docs.gradle.org/7.6/userguide/multi_project_builds.html
  */
 rootProject.name = 'casual-inbound-domain-discover'
-include 'ext:casual-api'
-include 'ext:casual-network-protocol'
-include 'ext:casual-network-api'
-include 'ext:casual-network'
 include 'src'
+

@@ -1,10 +1,15 @@
 //-*- coding: utf-8 -*-
 def netty_version = '4.1.89.Final'
+def casual_version = '2.2.16'
 
 ext.libs = [
+  casual_api: "se.laz.casual:casual-api:${casual_version}",
+  casual_network_protocol: "se.laz.casual:casual-network-protocol:${casual_version}",
+  casual_internal: "se.laz.casual:casual-internal:${casual_version}",
+  casual_network: "se.laz.casual:casual-network:${casual_version}",
   netty : "io.netty:netty-all:${netty_version}",
   netty_epoll: "io.netty:netty-transport-native-epoll:${netty_version}",
-  gson: 'com.google.code.gson:gson:2.9.0',
+  gson: 'com.google.code.gson:gson:2.10.1',
   // test
   junit4: 'junit:junit:4.13.2',
   hamcrest_all: 'org.hamcrest:hamcrest-all:1.3',

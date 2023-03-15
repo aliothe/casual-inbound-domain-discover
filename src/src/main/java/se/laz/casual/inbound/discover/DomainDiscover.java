@@ -3,8 +3,8 @@ package se.laz.casual.inbound.discover;
 import se.laz.casual.api.network.protocol.messages.CasualNWMessage;
 import se.laz.casual.config.ConfigurationService;
 import se.laz.casual.config.Domain;
+import se.laz.casual.internal.network.NetworkConnection;
 import se.laz.casual.network.ProtocolVersion;
-import se.laz.casual.network.api.NetworkConnection;
 import se.laz.casual.network.outbound.NettyConnectionInformation;
 import se.laz.casual.network.outbound.NettyConnectionInformationCreator;
 import se.laz.casual.network.outbound.NettyNetworkConnection;
@@ -52,6 +52,7 @@ public class DomainDiscover implements NetworkListener
      */
     public void issueDiscovery()
     {
+        LOG.info(() -> "configuration: " + ConfigurationService.getInstance().getConfiguration());
         NetworkConnection newNetworkConnection = createNetworkConnection();
         serviceExists(UUID.randomUUID(), "discoveryRequest", newNetworkConnection);
     }

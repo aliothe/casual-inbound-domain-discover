@@ -9,11 +9,12 @@ repositories {
 }
 
 dependencies {
-    api project(':ext:casual-api')
-    api project(':ext:casual-network-protocol')
-    api project(':ext:casual-network-api')
-    api project(':ext:casual-network')
-
+    api libs.casual_api
+    api libs.casual_network_protocol
+    api libs.casual_internal
+    api libs.casual_network
+    api libs.gson
+    
     implementation libs.netty
     implementation libs.netty_epoll   
     
@@ -35,7 +36,7 @@ jar {
     duplicatesStrategy = 'include'
     from {
         configurations.runtimeClasspath.collect {
-            if(it.name.contains('casual') || it.name.contains('netty')){
+            if(it.name.contains('casual') || it.name.contains('netty') || it.name.contains('gson')){
 		return it.isDirectory() ? it : zipTree(it)
            }
         }
