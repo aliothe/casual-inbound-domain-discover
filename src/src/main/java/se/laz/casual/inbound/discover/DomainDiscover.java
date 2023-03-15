@@ -53,8 +53,19 @@ public class DomainDiscover implements NetworkListener
     public void issueDiscovery()
     {
         LOG.info(() -> "configuration: " + ConfigurationService.getInstance().getConfiguration());
-        NetworkConnection newNetworkConnection = createNetworkConnection();
-        serviceExists(UUID.randomUUID(), "discoveryRequest", newNetworkConnection);
+        NetworkConnection newNetworkConnection = null;
+        try
+        {
+            newNetworkConnection = createNetworkConnection();
+            serviceExists(UUID.randomUUID(), "discoveryRequest", newNetworkConnection);
+        }
+        finally
+        {
+            if(null != newNetworkConnection)
+            {
+                newNetworkConnection.close();
+            }
+        }
     }
 
     private NetworkConnection createNetworkConnection()
